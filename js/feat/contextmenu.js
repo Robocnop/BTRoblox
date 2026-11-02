@@ -7,14 +7,14 @@ if(IS_BACKGROUND_PAGE) {
 		items: [
 			{
 				id: "copyParent",
-				title: "Copy...",
+				title: i18n("Copy..."),
 				contexts: ["link"],
 				disabledByDefault: true,
 				isParent: true
 			},
 			{
 				id: "assetLink",
-				title: "Copy asset id",
+				title: i18n("Copy asset id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://*.roblox.com/*-item?*id=*",
@@ -30,7 +30,7 @@ if(IS_BACKGROUND_PAGE) {
 			},
 			{
 				id: "bundleLink",
-				title: "Copy bundle id",
+				title: i18n("Copy bundle id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://*.roblox.com/bundles/*/*"
@@ -38,7 +38,7 @@ if(IS_BACKGROUND_PAGE) {
 			},
 			{
 				id: "badgeLink",
-				title: "Copy badge id",
+				title: i18n("Copy badge id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://*.roblox.com/badges/*/*"
@@ -46,7 +46,7 @@ if(IS_BACKGROUND_PAGE) {
 			},
 			{
 				id: "pluginLink",
-				title: "Copy plugin id",
+				title: i18n("Copy plugin id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://*.roblox.com/plugins/*/*"
@@ -54,7 +54,7 @@ if(IS_BACKGROUND_PAGE) {
 			},
 			{
 				id: "gamepassLink",
-				title: "Copy game pass id",
+				title: i18n("Copy game pass id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://*.roblox.com/game-pass/*/*",
@@ -63,7 +63,7 @@ if(IS_BACKGROUND_PAGE) {
 			},
 			{
 				id: "productLink",
-				title: "Copy product id",
+				title: i18n("Copy product id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://create.roblox.com/dashboard/creations/experiences/*/developer-products/*"
@@ -71,7 +71,7 @@ if(IS_BACKGROUND_PAGE) {
 			},
 			{
 				id: "groupLink",
-				title: "Copy group id",
+				title: i18n("Copy group id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://*.roblox.com/*roup.aspx*gid=*",
@@ -82,7 +82,7 @@ if(IS_BACKGROUND_PAGE) {
 			},
 			{
 				id: "placeLink",
-				title: "Copy place id",
+				title: i18n("Copy place id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://*.roblox.com/games/*/*",
@@ -93,7 +93,7 @@ if(IS_BACKGROUND_PAGE) {
 			},
 			{
 				id: "universeLink",
-				title: "Copy game id",
+				title: i18n("Copy game id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://*.roblox.com/universes/*id=*",
@@ -102,7 +102,7 @@ if(IS_BACKGROUND_PAGE) {
 			},
 			{
 				id: "userLink",
-				title: "Copy user id",
+				title: i18n("Copy user id"),
 				contexts: ["link"],
 				targetUrlPatterns: [
 					"*://*.roblox.com/users/*/*"
@@ -111,27 +111,27 @@ if(IS_BACKGROUND_PAGE) {
 			
 			{
 				id: "instanceId",
-				title: "Copy instance id",
+				title: i18n("Copy instance id"),
 				contexts: ["link"],
 				disabledByDefault: true
 			},
 			
 			{
 				id: "roleParent",
-				title: "Copy role...",
+				title: i18n("Copy role..."),
 				contexts: ["link"],
 				disabledByDefault: true,
 				isParent: true
 			},
 			{
 				id: "roleRank",
-				title: "Copy role rank",
+				title: i18n("Copy role rank"),
 				contexts: ["link"],
 				disabledByDefault: true
 			},
 			{
 				id: "roleId",
-				title: "Copy role id",
+				title: i18n("Copy role id"),
 				contexts: ["link"],
 				disabledByDefault: true
 			}

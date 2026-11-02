@@ -479,54 +479,54 @@ class ItemPreviewer extends AvatarPreviewer {
 			<div class="btr-thumb-popup btr-body-popup">
 
 				<div class=btr-body-outfits>
-					<label class=btr-outfit-header>Outfits</label>
+					<label class=btr-outfit-header>${i18n("Outfits")}</label>
 
 					<div class="btr-body-outfit-btn selected" data-outfit=current>
 						<div class=btr-body-outfit-icon>
 							<img src="">
 						</div>
-						<span class=btr-body-outfit-title>Current</span>
+						<span class=btr-body-outfit-title>${i18n("Current")}</span>
 					</div>
 					<div class=btr-body-outfit-btn data-outfit=bundle style=display:none>
 						<div class=btr-body-outfit-icon>
 							<img src="https://tr.rbxcdn.com/0291e3569377d17f1ea852a773ad56a5/110/110/Decal/Png">
 						</div>
-						<span class=btr-body-outfit-title>Bundle</span>
+						<span class=btr-body-outfit-title>${i18n("Bundle")}</span>
 					</div>
 					<div class=btr-body-outfit-btn data-outfit=default>
 						<div class=btr-body-outfit-icon>
 							<img src="https://tr.rbxcdn.com/cd6c66bb06aa97e00e4d79169e6d74e5/150/150/Avatar/Png">
 						</div>
-						<span class=btr-body-outfit-title>Default</span>
+						<span class=btr-body-outfit-title>${i18n("Default")}</span>
 					</div>
 				</div>
 
 				<div>
-					<label>Height</label>
+					<label>${i18n("Height")}</label>
 					<label class=value>90%</label>
 					<input type=range min=0 max=1 value=0 step=.01 data-target=height>
 				</div>
 
 				<div>
-					<label>Width</label>
+					<label>${i18n("Width")}</label>
 					<label class=value>90%</label>
 					<input type=range min=0 max=1 value=0 step=.01 data-target=width>
 				</div>
 
 				<div>
-					<label>Head</label>
+					<label>${i18n("Head")}</label>
 					<label class=value>90%</label>
 					<input type=range min=0 max=1 value=0 step=.01 data-target=head>
 				</div>
 
 				<div>
-					<label>Body Type</label>
+					<label>${i18n("Body Type")}</label>
 					<label class=value>90%</label>
 					<input type=range min=0 max=1 value=0 step=.01 data-target=bodyType>
 				</div>
 
 				<div>
-					<label>Proportions</label>
+					<label>${i18n("Proportions")}</label>
 					<label class=value>90%</label>
 					<input type=range min=0 max=1 value=0 step=.01 data-target=proportion>
 				</div>
@@ -672,7 +672,7 @@ class ItemPreviewer extends AvatarPreviewer {
 			const anim = playingAnim || this.getAnimation(this.currentAnim || 0)
 			
 			const label = this.dropdown.$find("[data-bind='label']")
-			label.textContent = !anim ? "" : (anim.isBundleAnim ? "Emotes" : anim.name)
+			label.textContent = !anim ? "" : (anim.isBundleAnim ? i18n("Emotes") : anim.name)
 			label.title = !anim ? "" : (anim.isBundleAnim ? "" : anim.name)
 
 			if(this.hasBundleAnims) {

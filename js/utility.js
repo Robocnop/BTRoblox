@@ -734,29 +734,29 @@ const $ = (() => {
 			const since = (relativeTo - date) / 1000
 
 			if(Math.floor(since) <= 0) {
-				return "Just now"
+				return i18n("Just now")
 			}
 
 			const y = Math.floor(since / 3600 / 24 / 365)
-			if(y >= 1) { return Math.floor(y) + (short ? " yr" : " year" + (y < 2 ? "" : "s")) + " ago" }
+			if(y >= 1) { return i18n(short ? "{0} yr ago" : y < 2 ? "{0} year ago" : "{0} years ago", Math.floor(y)) }
 
 			const M = Math.floor(since / 3600 / 24 / 31)
-			if(M >= 1) { return Math.floor(M) + (short ? " mon" : " month" + (M < 2 ? "" : "s")) + " ago" }
+			if(M >= 1) { return i18n(short ? "{0} mon ago" : M < 2 ? "{0} month ago" : "{0} months ago", Math.floor(M)) }
 
 			const w = Math.floor(since / 3600 / 24 / 7)
-			if(w >= 1) { return Math.floor(w) + (short ? " wk" : " week" + (w < 2 ? "" : "s")) + " ago" }
+			if(w >= 1) { return i18n(short ? "{0} wk ago" : w < 2 ? "{0} week ago" : "{0} weeks ago", Math.floor(w)) }
 
 			const d = Math.floor(since / 3600 / 24)
-			if(d >= 1) { return Math.floor(d) + (short ? " dy" : " day" + (d < 2 ? "" : "s")) + " ago" }
+			if(d >= 1) { return i18n(short ? "{0} dy ago" : d < 2 ? "{0} day ago" : "{0} days ago", Math.floor(d)) }
 
 			const h = Math.floor(since / 3600)
-			if(h >= 1) { return Math.floor(h) + (short ? " hr" : " hour" + (h < 2 ? "" : "s")) + " ago" }
+			if(h >= 1) { return i18n(short ? "{0} hr ago" : h < 2 ? "{0} hour ago" : "{0} hours ago", Math.floor(h)) }
 
 			const m = Math.floor(since / 60)
-			if(m >= 1) { return Math.floor(m) + (short ? " min" : " minute" + (m < 2 ? "" : "s")) + " ago" }
+			if(m >= 1) { return i18n(short ? "{0} min ago" : m < 2 ? "{0} minute ago" : "{0} minutes ago", Math.floor(m)) }
 
 			const s = Math.floor(since)
-			return Math.floor(s) + (short ? " sec" : " second" + (Math.floor(s) === 1 ? "" : "s")) + " ago"
+			return i18n(short ? "{0} sec ago" : Math.floor(s) === 1 ? "{0} second ago" : "{0} seconds ago", Math.floor(s))
 		},
 
 		hashString(str) {

@@ -21,7 +21,7 @@ pageInit.avatar = () => {
 				reactHook.createElement("a", {
 					className: "text-link btr-advanced-button",
 					onClick: () => openAdvancedAccessories(),
-				}, "Advanced")
+				}, i18n("Advanced"))
 			)
 		})
 	})
@@ -43,7 +43,7 @@ pageInit.avatar = () => {
 						<div class="scale-container">
 							<div class="text-label font-subheader-1" style="width:100%" title="{{item.name}} ({{item.id}})">{{item.name}} ({{item.id}})</div>
 							
-							<div class="text-label font-subheader-1">Position</div>
+							<div class="text-label font-subheader-1">${i18n("Position")}</div>
 							<div class="scale-label font-body">({{item.meta.position.X}}, {{item.meta.position.Y}}, {{item.meta.position.Z}})</div>
 							<div style="width:100%;clear:both">
 								<input type="range" class="pr0" step="0.01"
@@ -66,7 +66,7 @@ pageInit.avatar = () => {
 									on-input-finished="btrUpdateItem(item)">
 							</div>
 							
-							<div class="text-label font-subheader-1">Rotation</div>
+							<div class="text-label font-subheader-1">${i18n("Rotation")}</div>
 							<div class="scale-label font-body">({{item.meta.rotation.X}}, {{item.meta.rotation.Y}}, {{item.meta.rotation.Z}})</div>
 							<div style="width:100%;clear:both">
 								<input type="range" class="pr0" step="1"
@@ -89,7 +89,7 @@ pageInit.avatar = () => {
 									on-input-finished="btrUpdateItem(item)">
 							</div>
 							
-							<div class="text-label font-subheader-1">Scale</div>
+							<div class="text-label font-subheader-1">${i18n("Scale")}</div>
 							<div class="scale-label font-body">{{item.btrScale}}</div>
 							<input type="range" class="pr0" step="0.01"
 								style="--btr-input-perc:{{(item.btrScale-btrBounds[item.assetType.id].scale.X.min)/(btrBounds[item.assetType.id].scale.X.max-btrBounds[item.assetType.id].scale.X.min)*100}}%;"
@@ -217,7 +217,7 @@ pageInit.avatar = () => {
 			})
 			
 			contentScript.listen("skinColorError", () => {
-				Roblox.BootstrapWidgets.ToggleSystemMessage($(".alert-warning"), 100, 2000, "Failed to update skin tone.")
+				Roblox.BootstrapWidgets.ToggleSystemMessage($(".alert-warning"), 100, 2000, i18n("Failed to update skin tone."))
 			})
 			
 			hijackXHR(request => {

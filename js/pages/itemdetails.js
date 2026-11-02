@@ -326,7 +326,7 @@ pageInit.itemdetails = () => {
 				}
 				
 				if(SETTINGS.get("itemdetails.showSales") && category !== "bundles") {
-					const salesContainer = createRow("Sales", "")
+					const salesContainer = createRow(i18n("Sales"), "")
 					
 					typeField.parentNode.after(salesContainer)
 					
@@ -357,7 +357,7 @@ pageInit.itemdetails = () => {
 							}
 						})
 					} else if(category === "badges") {
-						salesContainer.$find(".text-label").textContent = "Awarded"
+						salesContainer.$find(".text-label").textContent = i18n("Awarded")
 						show()
 						
 						RobloxApi.badges.getBadgeDetails(assetId).then(data => {
@@ -398,8 +398,8 @@ pageInit.itemdetails = () => {
 						}
 					}
 					
-					const createdContainer = createRow("Created", "")
-					const updatedContainer = createRow("Updated", "")
+					const createdContainer = createRow(i18n("Created"), "")
+					const updatedContainer = createRow(i18n("Updated"), "")
 					
 					typeField.parentNode.after(createdContainer, updatedContainer)
 					

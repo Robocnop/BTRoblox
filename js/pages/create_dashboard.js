@@ -96,11 +96,11 @@ pageInit.create_dashboard = () => {
 									index + 1, 0,
 									Link(
 										`/dashboard/creations/experiences/${args[0].creation.universeId}/overview`,
-										objects.jsx(objects.Mui.MenuItem, { children: "Configure Experience" }),
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("Configure Experience") }),
 									),
 									Link(
 										`/dashboard/creations/experiences/${args[0].creation.universeId}/places/${args[0].creation.assetId}/configure`,
-										objects.jsx(objects.Mui.MenuItem, { children: "Configure Start Place" })
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("Configure Start Place") })
 									)
 								)
 							} else if(args[0].itemType === "CatalogAsset") {
@@ -111,11 +111,11 @@ pageInit.create_dashboard = () => {
 									0, 0,
 									Link(
 										`https://www.roblox.com/catalog/${args[0].creation.assetId}/`,
-										objects.jsx(objects.Mui.MenuItem, { children: "View on Roblox" })
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("View on Roblox") })
 									),
 									Link(
 										`/dashboard/creations/catalog/${args[0].creation.assetId}/configure`,
-										objects.jsx(objects.Mui.MenuItem, { children: "Configure Asset" })
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("Configure Asset") })
 									)
 								)
 								
@@ -172,7 +172,7 @@ pageInit.create_dashboard = () => {
 									// objects.jsx(objects.Mui.Divider, {}),
 									Link(
 										`/dashboard/creations/store/${assetId}/configure`,
-										objects.jsx(objects.Mui.MenuItem, { children: "Configure Asset" })
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("Configure Asset") })
 									)
 								)
 							}
@@ -254,7 +254,7 @@ pageInit.create_dashboard = () => {
 												d: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
 											})
 										}),
-										" ", "Download",,
+										" ", i18n("Download"),,
 									]
 								})
 							)

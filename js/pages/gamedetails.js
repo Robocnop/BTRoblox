@@ -19,7 +19,7 @@ pageInit.gamedetails = () => {
 		document.$watch("#content").$then().$watch(">#game-detail-page").$then()
 			.$watch("#game-context-menu .dropdown-menu .VisitButtonEditGLI", placeEdit => {
 				placeEdit.parentNode.parentNode.append(
-					html`<li><a class=btr-download-place><div>Download</div></a></li>`
+					html`<li><a class=btr-download-place><div>${i18n("Download")}</div></a></li>`
 				)
 				
 				const target = $("#game-context-menu")
@@ -49,7 +49,7 @@ pageInit.gamedetails = () => {
 					target.after(btnCont)
 					
 					placeEdit.parentNode.parentNode.append(
-						html`<li><a class=btr-open-in-explorer><div>Open in Explorer</div></a></li>`
+						html`<li><a class=btr-open-in-explorer><div>${i18n("Open in Explorer")}</div></a></li>`
 					)
 					
 					target.$on("click", ".btr-open-in-explorer", () => {
@@ -331,7 +331,7 @@ pageInit.gamedetails = () => {
 						"li", { className: `btr-pager-mid` },
 						React.createElement(
 							"span", {},
-							"Page",
+							i18n("Page"),
 						),
 						React.createElement(
 							"input", {
@@ -357,7 +357,7 @@ pageInit.gamedetails = () => {
 						),
 						React.createElement(
 							"span", {},
-							` of `,
+							` ${i18n("of")} `,
 							
 							React.createElement(
 								"span", {
@@ -497,7 +497,7 @@ pageInit.gamedetails = () => {
 						let serverDetails
 						
 						if(regionSetting !== "region") {
-							status.props.children += `\nPing: ${props.ping ?? -1}ms`
+							status.props.children += `\n${i18n("Ping: {0}ms", props.ping ?? -1)}`
 						}
 						
 						if(regionSetting !== "ping") {
@@ -521,13 +521,13 @@ pageInit.gamedetails = () => {
 							
 							if(regionSetting === "combined") {
 								status.props.children += ` (${
-									!serverDetails ? "Loading" :
+									!serverDetails ? i18n("Loading") :
 									!serverDetails.location ? serverDetails.statusText :
 									serverDetails.location.country.code
 								})`
 							} else {
-								status.props.children += `\nRegion: ${
-									!serverDetails ? "Loading" :
+								status.props.children += `\n${i18n("Region:")} ${
+									!serverDetails ? i18n("Loading") :
 									!serverDetails.location ? serverDetails.statusText :
 									`${serverDetails.location.city}, ${
 										serverDetails.location.country.name === "United States" ?
@@ -539,7 +539,7 @@ pageInit.gamedetails = () => {
 							}
 							
 							status.props.title = 
-								!serverDetails ? "Loading" :
+								!serverDetails ? i18n("Loading") :
 								!serverDetails.location ? serverDetails.statusTextLong :
 								serverDetails.location.country.name === "United States" ?
 									`${serverDetails.location.city}, ${serverDetails.location.region.name}, ${serverDetails.location.country.name}`
@@ -636,7 +636,7 @@ pageInit.gamedetails = () => {
 
 			container
 				.$watch(["#tab-about", "#tab-game-instances"], (aboutTab, gameTab) => {
-					aboutTab.$find(".text-lead").textContent = "Recommended"
+					aboutTab.$find(".text-lead").textContent = i18n("Recommended")
 					
 					aboutTab.classList.remove("active")
 					gameTab.classList.add("active")
@@ -733,7 +733,7 @@ pageInit.gamedetails = () => {
 									const awardedDate = new Date(entry.awardedDate)
 									row.$find(".badge-data-container").append(html`
 									<span class=btr-unlock-date title="${awardedDate.$since()}">
-										Unlocked ${awardedDate.$format("MMM D, YYYY, h:mm A")}
+										${i18n("Unlocked {0}", awardedDate.$format("MMM D, YYYY, h:mm A"))}
 									</span>`)
 								}
 							}
@@ -769,13 +769,13 @@ pageInit.gamedetails = () => {
 						if(desc.scrollHeight > desc.clientHeight) {
 							desc.classList.add("btr-desc-overflow")
 							
-							const moreBtn = html`<span class="btr-badge-more text-link cursor-pointer">See More</span>`
+							const moreBtn = html`<span class="btr-badge-more text-link cursor-pointer">${i18n("See More")}</span>`
 							desc.after(moreBtn)
 							
 							moreBtn.$on("click", () => {
 								const open = !desc.classList.contains("btr-desc-open")
 								desc.classList.toggle("btr-desc-open", open)
-								moreBtn.textContent = open ? `See Less` : `See More`
+								moreBtn.textContent = open ? i18n("See Less") : i18n("See More")
 							})
 						}
 
@@ -795,7 +795,7 @@ pageInit.gamedetails = () => {
 					
 					if(SETTINGS.get("gamedetails.showBadgeOwned")) {
 						badges.$watch(".container-header h2", header => {
-							const refresh = html`<button type="button" class="btn-more rbx-refresh refresh-link-icon btn-control-xs btn-min-width">Refresh</button>`
+							const refresh = html`<button type="button" class="btn-more rbx-refresh refresh-link-icon btn-control-xs btn-min-width">${i18n("Refresh")}</button>`
 							header.after(refresh)
 							
 							refresh.$on("click", () => {
@@ -840,10 +840,10 @@ pageInit.gamedetails = () => {
 						
 						const box = html`
 						<div class="section-content btr-universe-box">
-							This place is part of 
+							${i18n("This place is part of")} 
 							<a class="btr-universe-name text-link" href="/games/${rootPlaceId}/${formatUrlName(rootPlaceName)}">${rootPlaceName || "..."}</a>
 							<div class=btr-universe-visit-button>
-								<a class="btn-secondary-md">Play</a>
+								<a class="btn-secondary-md">${i18n("Play")}</a>
 							</div>
 						</div>`
 						

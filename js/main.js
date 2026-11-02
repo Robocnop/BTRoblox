@@ -318,7 +318,8 @@ if(document.contentType === "text/html" && location.protocol !== "blob" && docum
 		injectScript.init(
 			SETTINGS.serialize(),
 			IS_DEV_MODE,
-			RobuxToCash.getSelectedOption()
+			RobuxToCash.getSelectedOption(),
+			i18n.getMessages()
 		)
 		
 		//
@@ -442,7 +443,7 @@ if(document.contentType === "text/html" && location.protocol !== "blob" && docum
 					})
 				})
 			} else {
-				alert.textContent = `BTRoblox needs some permissions to work properly. Click the extension button to fix the issue.`
+				alert.textContent = i18n("BTRoblox needs some permissions to work properly. Click the extension button to fix the issue.")
 				alert.style.cursor = ""
 			}
 		}

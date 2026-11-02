@@ -350,7 +350,7 @@ pageInit.catalog = () => {
 									className: "btr-item-owned",
 									children: reactHook.createElement("span", {
 										className: "icon-checkmark-white-bold",
-										title: "You own this item"
+										title: i18n("You own this item")
 									})
 								}))
 							}

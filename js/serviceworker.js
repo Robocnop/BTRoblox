@@ -1,6 +1,8 @@
 "use strict"
 
 importScripts(
+	"/js/i18n.js",
+	"/js/locales/fr.js",
 	"/js/utility.js",
 	"/js/background.js",
 	

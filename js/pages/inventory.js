@@ -98,7 +98,7 @@ pageInit.inventory = () => {
 			for(const title of template.$findAll(".assets-explorer-title")) {
 				title.after(html`
 				<div class="header-content" ng-show="${visibility}">
-					<a class="btn btn-secondary-sm btr-it-btn btr-it-remove disabled" style="float:right;margin-left:10px;">Remove</a>
+					<a class="btn btn-secondary-sm btr-it-btn btr-it-remove disabled" style="float:right;margin-left:10px;">${i18n("Remove")}</a>
 				</div>`)
 			}
 

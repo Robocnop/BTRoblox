@@ -129,7 +129,7 @@ function createPager(noSelect, hideWhenEmpty) {
 				</button>
 			</li>
 			<li class=btr-pager-mid>
-				<span>Page </span><span class=btr-pager-cur></span>
+				<span>${i18n("Page")} </span><span class=btr-pager-cur></span>
 			</li>
 			<li class=btr-pager-next>
 				<button class=btn-generic-right-sm>
@@ -142,7 +142,7 @@ function createPager(noSelect, hideWhenEmpty) {
 	if(!noSelect) {
 		pager.$find(".btr-pager-mid").replaceWith(html`
 		<li class=btr-pager-mid>
-			<span>Page</span><input class=btr-pager-cur type=text value=1><span>of <span class=btr-pager-total></span></span>
+			<span>${i18n("Page")}</span><input class=btr-pager-cur type=text value=1><span>${i18n("of")} <span class=btr-pager-total></span></span>
 		</li>`)
 	}
 
@@ -960,8 +960,8 @@ const initExplorer = async (assetId, assetTypeId, isBundle) => {
 			if(!explorerInitialized) {
 				explorerInitialized = true
 				
-				const updateLoadingText = perc => explorer.setLoadingText(`Loading... ${Math.floor(perc * 100 + 0.5)}%`)
-				explorer.setLoadingText(`Downloading...`)
+				const updateLoadingText = perc => explorer.setLoadingText(i18n("Loading... {0}%", Math.floor(perc * 100 + 0.5)))
+				explorer.setLoadingText(i18n("Downloading..."))
 				
 				if(isBundle) {
 					let first = true
@@ -1099,7 +1099,7 @@ const initDownloadButton = async (assetId, assetTypeId, isBundle) => {
 				downloadButton.classList.remove("loading")
 				
 				if(!buffer) {
-					alert("Failed to download")
+					alert(i18n("Failed to download"))
 					return
 				}
 
@@ -1115,10 +1115,10 @@ const initDownloadButton = async (assetId, assetTypeId, isBundle) => {
 		<div class=btr-download-popover>
 			<ul>
 				<li>
-					<a class=btr-download href="${assetUrl}">Download as .mesh</a>
+					<a class=btr-download href="${assetUrl}">${i18n("Download as .mesh")}</a>
 				</li>
 				<li>
-					<a class=btr-download format=obj>Download as .obj</a>
+					<a class=btr-download format=obj>${i18n("Download as .obj")}</a>
 				</li>
 			</ul>
 		</div>`
@@ -1126,7 +1126,7 @@ const initDownloadButton = async (assetId, assetTypeId, isBundle) => {
 		if(IS_DEV_MODE) {
 			popoverTemplate.$find("ul").append(html`
 			<li>
-				<a class=btr-log-mesh>Print to console</a>
+				<a class=btr-log-mesh>${i18n("Print to console")}</a>
 			</li>`)
 			
 			btnCont.$on("click", ".btr-log-mesh", () => {
@@ -1159,10 +1159,10 @@ const initDownloadButton = async (assetId, assetTypeId, isBundle) => {
 		<div class=rbx-popover-content data-toggle=popover-btr-download>
 			<ul class=dropdown-menu role=menu>
 				<li>
-					<a class=btr-download format=avatar_meshpart_head href="${assetUrl}">Download MeshPart</a>
+					<a class=btr-download format=avatar_meshpart_head href="${assetUrl}">${i18n("Download MeshPart")}</a>
 				</li>
 				<li>
-					<a class=btr-download>Download SpecialMesh</a>
+					<a class=btr-download>${i18n("Download SpecialMesh")}</a>
 				</li>
 			</ul>
 		</div>`
@@ -1179,10 +1179,10 @@ const initDownloadButton = async (assetId, assetTypeId, isBundle) => {
 			<div class=rbx-popover-content data-toggle=popover-btr-download>
 				<ul class=dropdown-menu role=menu>
 					<li>
-						<a class=btr-download format=avatar_meshpart_accessory href="${assetUrl}">Download MeshPart</a>
+						<a class=btr-download format=avatar_meshpart_accessory href="${assetUrl}">${i18n("Download MeshPart")}</a>
 					</li>
 					<li>
-						<a class=btr-download>Download SpecialMesh</a>
+						<a class=btr-download>${i18n("Download SpecialMesh")}</a>
 					</li>
 				</ul>
 			</div>`
@@ -1293,7 +1293,7 @@ pageInit.www = () => {
 	injectScript.call("addBTRSettings", () => {
 		reactHook.inject("#settings-popover-menu", elem => {
 			elem.prepend(reactHook.createElement("li", {
-				dangerouslySetInnerHTML: { __html: `<a class="rbx-menu-item btr-settings-toggle">BTR Settings</a>`}
+				dangerouslySetInnerHTML: { __html: `<a class="rbx-menu-item btr-settings-toggle">${i18n("BTR Settings")}</a>`}
 			}))
 		})
 	})

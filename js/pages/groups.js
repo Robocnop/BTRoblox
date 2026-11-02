@@ -151,7 +151,7 @@ pageInit.groups = () => {
 		})
 		
 		document.$watch([".profile-insights-container", ".description-more-btn"], (container, moreBtn) => {
-			const btn = html`<button type="button" class="flex items-center bg-surface-300 radius-circle text-caption-medium padding-x-medium padding-y-xsmall cursor-pointer profile-insight-pill-button" style="border: medium;">More</button>`
+			const btn = html`<button type="button" class="flex items-center bg-surface-300 radius-circle text-caption-medium padding-x-medium padding-y-xsmall cursor-pointer profile-insight-pill-button" style="border: medium;">${i18n("More")}</button>`
 			container.append(btn)
 			
 			moreBtn.style.display = "none"

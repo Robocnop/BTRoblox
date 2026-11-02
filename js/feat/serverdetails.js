@@ -388,22 +388,22 @@ const resolveServerDetails = details => {
 			return {
 				success: false,
 				status: details.status,
-				statusText: "Full",
-				statusTextLong: "Unable to fetch server location: Server is full"
+				statusText: i18n("Full"),
+				statusTextLong: i18n("Unable to fetch server location: Server is full")
 			}
 		case 12:
 			return {
 				success: false,
 				status: details.status,
-				statusText: "Unknown",
-				statusTextLong: "Unable to fetch server location: You do not have access to this place"
+				statusText: i18n("Unknown"),
+				statusTextLong: i18n("Unable to fetch server location: You do not have access to this place")
 			}
 		default:
 			return {
 				success: false,
 				status: details.status,
-				statusText: "Unknown",
-				statusTextLong: `Unable to fetch server location: Unknown status ${details.status}`
+				statusText: i18n("Unknown"),
+				statusTextLong: i18n("Unable to fetch server location: Unknown status {0}", details.status)
 			}
 		}
 		
@@ -430,8 +430,8 @@ const resolveServerDetails = details => {
 		return {
 			success: false,
 			address: address,
-			statusText: "Unknown",
-			statusTextLong: `Unknown server address ${address}`
+			statusText: i18n("Unknown"),
+			statusTextLong: i18n("Unknown server address {0}", address)
 		}
 	}
 	

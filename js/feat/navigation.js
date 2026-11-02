@@ -183,7 +183,7 @@ const Navigation = {
 			
 			init() {
 				document.$watch("#header").$then().$watch("ul.rbx-navbar", navbar => {
-					const button = html`<li class=cursor-pointer style="order:-1"><a class="font-header-2 nav-menu-title text-header" href=/home>Home</a></li>`
+					const button = html`<li class=cursor-pointer style="order:-1"><a class="font-header-2 nav-menu-title text-header" href=/home>${i18n("Home")}</a></li>`
 					navbar.append(button)
 					this.addNode(button)
 				}, { continuous: true })
@@ -532,7 +532,7 @@ const Navigation = {
 						<span class="size-1000 grow-0 shrink-0 basis-auto flex justify-center items-center">
 							<span role="presentation" class="grow-0 shrink-0 basis-auto icon icon-regular-hand-two-arrows-horizontal size-[var(--icon-size-large)]"></span>
 						</span>
-						<span class="min-width-0 text-truncate-end text-no-wrap">Transactions</span>
+						<span class="min-width-0 text-truncate-end text-no-wrap">${i18n("Transactions")}</span>
 					</a>
 				</li>`,
 		})

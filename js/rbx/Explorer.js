@@ -91,13 +91,13 @@ const Explorer = (() => {
 				open: new Set(),
 			}
 			
-			this.loadingText = "Loading"
+			this.loadingText = i18n("Loading")
 
 			const element = this.element = html`
 			<div class=btr-explorer-parent>
 				<div class=btr-explorer>
 					<div class=btr-explorer-header>
-						Explorer
+						${i18n("Explorer")}
 						<div class=btr-dropdown-container style="display: none">
 							<button class=btr-dropdown-btn>
 								<span class=btr-dropdown-label></span>
@@ -108,7 +108,7 @@ const Explorer = (() => {
 						</div>
 					</div>
 					<div class=btr-explorer-filter>
-						<input class=btr-explorer-filter-input type=text placeholder="Filter model">
+						<input class=btr-explorer-filter-input type=text placeholder="${i18n("Filter model")}">
 					</div>
 					<div class=btr-explorer-list style=display:none>
 						<div class=btr-explorer-inner-list></div>
@@ -212,9 +212,9 @@ const Explorer = (() => {
 						<div class=btr-sourceviewer-header>
 							<div class=btr-sourceviewer-settings-button></div>
 							<div class=btr-sourceviewer-settings>
-								<div class=btr-sourceviewer-setting-label>Tab Width</div><div class=btr-sourceviewer-setting-value><input data-sv-setting=tabwidth type=number></input></div>
-								<div class=btr-sourceviewer-setting-label>Text Wrapping</div><div class=btr-sourceviewer-setting-value><input data-sv-setting=wrapping type=checkbox></input></div>
-								<div class=btr-sourceviewer-setting-label>Show Whitespace</div><div class=btr-sourceviewer-setting-value><input data-sv-setting=whitespace type=checkbox></input></div>
+								<div class=btr-sourceviewer-setting-label>${i18n("Tab Width")}</div><div class=btr-sourceviewer-setting-value><input data-sv-setting=tabwidth type=number></input></div>
+								<div class=btr-sourceviewer-setting-label>${i18n("Text Wrapping")}</div><div class=btr-sourceviewer-setting-value><input data-sv-setting=wrapping type=checkbox></input></div>
+								<div class=btr-sourceviewer-setting-label>${i18n("Show Whitespace")}</div><div class=btr-sourceviewer-setting-value><input data-sv-setting=whitespace type=checkbox></input></div>
 							</div>
 						</div>
 						<div class=btr-sourceviewer-content>
@@ -377,7 +377,7 @@ const Explorer = (() => {
 			propertyContainer.replaceChildren()
 
 			if(!this.selection.length) {
-				header.textContent = "Properties"
+				header.textContent = i18n("Properties")
 				properties.classList.add("closed")
 				return
 			}
@@ -385,7 +385,7 @@ const Explorer = (() => {
 			properties.classList.remove("closed")
 
 			const target = this.selection[0].inst
-			header.textContent = `Properties - ${target.ClassName} "${target.Name}"`
+			header.textContent = i18n("Properties - {0} \"{1}\"", target.ClassName, target.Name)
 
 			const hidden = {
 				AttributesSerialize: true,
@@ -692,7 +692,7 @@ const Explorer = (() => {
 						if(tooLong || value.includes("\n") || name.includes("Source")) {
 							input.value = input.title = (tooLong ? value.slice(0, 117) + "..." : value)
 
-							const more = html`<a class=more title="View Source">...</a>`
+							const more = html`<a class=more title="${i18n("View Source")}">...</a>`
 							more.$on("click", () => this.openSourceViewer(target, name))
 							
 							valueItem.append(more)
@@ -700,7 +700,7 @@ const Explorer = (() => {
 							const id = AssetCache.getAssetIdFromUrl(value)
 							if(id) {
 								const more = html`<a class=more href="https://www.roblox.com/library/${id}/Redirect" target=_blank>🔗</a>`
-								more.title = "Go to asset"
+								more.title = i18n("Go to asset")
 								valueItem.append(more)
 							}
 
@@ -970,7 +970,7 @@ const Explorer = (() => {
 				this.innerList.style.display = "none"
 				this.listStatus.style.display = ""
 				
-				this.listStatus.textContent = `No model selected`
+				this.listStatus.textContent = i18n("No model selected")
 				return
 			}
 			
@@ -978,7 +978,7 @@ const Explorer = (() => {
 				this.innerList.style.display = "none"
 				this.listStatus.style.display = ""
 				
-				this.listStatus.textContent = `Failed to load model`
+				this.listStatus.textContent = i18n("Failed to load model")
 				return
 			}
 			

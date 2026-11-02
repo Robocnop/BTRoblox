@@ -91,7 +91,7 @@ pageInit.profile = () => {
 				<div class=btr-profile-left>
 					<div class=btr-profile-about>
 						<div class=container-header>
-							<h2 ng-bind="'Heading.AboutTab' | translate">About</h2>
+							<h2 ng-bind="'Heading.AboutTab' | translate">${i18n("About")}</h2>
 							<div class=btr-profile-social-links>
 							</div>
 						</div>
@@ -103,18 +103,18 @@ pageInit.profile = () => {
 							</div>
 							<div class=btr-profile-stats style=display:none>
 								<div class=btr-profile-stat>
-									<div class="text-label" ng-bind="'Label.JoinDate' | translate">Join Date</div>
+									<div class="text-label" ng-bind="'Label.JoinDate' | translate">${i18n("Join Date")}</div>
 									<div class="text-lead text-overflow btr-stats-joindate"></div>
 								</div>
 								<div class=btr-profile-stat>
-									<div class="text-label" ng-bind="'Label.PlaceVisits' | translate">Place Visits</div>
+									<div class="text-label" ng-bind="'Label.PlaceVisits' | translate">${i18n("Place Visits")}</div>
 									<div class="text-lead text-overflow btr-stats-placevisits"></div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class=btr-profile-playerbadges>
-						<div class=container-header><h2 ng-bind="'Heading.PlayerBadge' | translate">Badges</h2></div>
+						<div class=container-header><h2 ng-bind="'Heading.PlayerBadge' | translate">${i18n("Badges")}</h2></div>
 						<div>
 							<div class=btr-card-list>
 								<span class="spinner spinner-default"></span>
@@ -122,7 +122,7 @@ pageInit.profile = () => {
 						</div>
 					</div>
 					<div class=btr-profile-groups>
-						<div class=container-header><h2 ng-bind="'Heading.Groups' | translate">Communities</h2></div>
+						<div class=container-header><h2 ng-bind="'Heading.Groups' | translate">${i18n("Communities")}</h2></div>
 						<div>
 							<div class=btr-card-list>
 								<span class="spinner spinner-default"></span>
@@ -133,19 +133,19 @@ pageInit.profile = () => {
 
 				<div class=btr-profile-right>
 					<div class=btr-profile-games>
-						<div class=container-header><h2 ng-bind="'Heading.Games' | translate">Experiences</h2></div>
+						<div class=container-header><h2 ng-bind="'Heading.Games' | translate">${i18n("Experiences")}</h2></div>
 						<div class=btr-games-content>
 							<span class="spinner spinner-default"></span>
 						</div>
 					</div>
 					<div class=placeholder-friends>
-						<div class=container-header><h2 ng-bind="'Heading.Friends' | translate">Friends</h2></div>
+						<div class=container-header><h2 ng-bind="'Heading.Friends' | translate">${i18n("Friends")}</h2></div>
 						<div class="spinner spinner-default"></div>
 					</div>
 					<div class=btr-profile-favorites>
 						<div class=container-header>
 							<a href="/users/${userId}/favorites">
-								<h2 ng-bind="'Heading.FavoriteGames' | translate">Favorites</h2>
+								<h2 ng-bind="'Heading.FavoriteGames' | translate">${i18n("Favorites")}</h2>
 								<span class="icon-chevron-heavy-right"></span>
 							</a>
 						</div>
@@ -164,7 +164,7 @@ pageInit.profile = () => {
 					<div class=btr-profile-inventory style=display:none>
 						<div class=container-header>
 							<a href="/users/${userId}/inventory">
-								<h2 ng-bind="'Action.Inventory' | translate">Inventory</h2>
+								<h2 ng-bind="'Action.Inventory' | translate">${i18n("Inventory")}</h2>
 								<span class="icon-chevron-heavy-right"></span>
 							</a>
 						</div>
@@ -183,7 +183,7 @@ pageInit.profile = () => {
 						const btn = html`
 						<a aria-disabled="false" class="relative clip group/interactable focus-visible:outline-focus disabled:outline-none cursor-pointer relative flex justify-center items-center radius-circle stroke-none padding-left-medium padding-right-medium height-800 text-label-medium bg-shift-300 content-action-utility" style="text-decoration: none; opacity: 0.5;">
 							<div role="presentation" class="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)] group-disabled/interactable:bg-none"></div>
-							<span class="text-no-wrap text-truncate-end">More</span>
+							<span class="text-no-wrap text-truncate-end">${i18n("More")}</span>
 						</a>`
 						
 						injectScript.call("hookProfileMoreButton", btn => {
@@ -246,7 +246,7 @@ pageInit.profile = () => {
 					tabs.parentNode.style.display = "none"
 				})
 				.$watch(".btr-wrapper-CurrentlyWearing", wearing => {
-					const toggleItems = html`<span class="btr-toggle-items btn-control btn-control-sm">Show Items</span>`
+					const toggleItems = html`<span class="btr-toggle-items btn-control btn-control-sm">${i18n("Show Items")}</span>`
 					profileContainer.$find(".profile-avatar-left").parentNode.append(toggleItems)
 					
 					wearing.classList.add("btr-currently-wearing", "stroke-muted", "stroke-standard", "shadow-transient-high")
@@ -260,7 +260,7 @@ pageInit.profile = () => {
 					
 					const toggle = () => {
 						wearing.classList.toggle("visible")
-						toggleItems.textContent = wearing.classList.contains("visible") ? "Hide Items" : "Show Items"
+						toggleItems.textContent = wearing.classList.contains("visible") ? i18n("Hide Items") : i18n("Show Items")
 						
 						if(wearing.classList.contains("visible")) {
 							document.$on("click", onClick)
@@ -293,19 +293,19 @@ pageInit.profile = () => {
 					desc.textContent = descText
 					
 					if(desc.scrollHeight > desc.offsetHeight) {
-						const descToggle = html`<span class="btr-toggle-description">Show More</span>`
+						const descToggle = html`<span class="btr-toggle-description">${i18n("Show More")}</span>`
 						desc.after(descToggle)
 						
 						descToggle.$on("click", () => {
 							const expanded = !desc.parentNode.classList.contains("expanded")
 							desc.parentNode.classList.toggle("expanded", expanded)
 
-							descToggle.textContent = expanded ? "Show Less" : "Show More"
+							descToggle.textContent = expanded ? i18n("Show Less") : i18n("Show More")
 						})
 					}
 				} else {
 					desc.replaceChildren(
-						html`<div class="section-content-off btr-section-content-off">No bio yet</div>`
+						html`<div class="section-content-off btr-section-content-off">${i18n("No bio yet")}</div>`
 					)
 				}
 				
@@ -373,7 +373,7 @@ pageInit.profile = () => {
 					list.replaceChildren()
 
 					if(!badges.length) {
-						list.append(html`<div class="section-content-off btr-section-content-off">This user has no Player Badges</div>`)
+						list.append(html`<div class="section-content-off btr-section-content-off">${i18n("This user has no Player Badges")}</div>`)
 						newCont.$find(".btr-profile-playerbadges").style.display = "none"
 						return
 					}
@@ -483,7 +483,7 @@ pageInit.profile = () => {
 
 						pager.setMaxPage(Math.floor((numGroups - 1) / pageSize) + 1)
 						if(numGroups === 0) {
-							list.replaceChildren(html`<div class="section-content-off btr-section-content-off">This user is in no Communities</div>`)
+							list.replaceChildren(html`<div class="section-content-off btr-section-content-off">${i18n("This user is in no Communities")}</div>`)
 							return
 						}
 						
@@ -549,24 +549,24 @@ pageInit.profile = () => {
 				const dropdown = html`
 				<div class=input-group-btn>
 					<button type=button class=input-dropdown-btn data-toggle=dropdown aria-expanded=false>
-						<span class=rbx-selection-label data-bind=label>Places</span>
+						<span class=rbx-selection-label data-bind=label>${i18n("Places")}</span>
 						<span class=icon-down-16x16></span>
 					</button>
 					<ul data-toggle=dropdown-menu class=dropdown-menu role=menu>
-						<li data-value=8><a href=#>Accessories</a></li>
-						<li data-value=24><a href=#>Animations</a></li>
-						<li data-value=3><a href=#>Audio</a></li>
-						<li data-value=13><a href=#>Decals</a></li>
-						<li data-value=18><a href=#>Faces</a></li>
-						<li data-value=19><a href=#>Gear</a></li>
-						<li data-value=17><a href=#>Heads</a></li>
-						<li data-value=40><a href=#>Meshes</a></li>
-						<li data-value=10><a href=#>Models</a></li>
-						<li data-value=12><a href=#>Pants</a></li>
-						<li data-value=9><a href=#>Places</a></li>
-						<li data-value=38><a href=#>Plugins</a></li>
-						<li data-value=11><a href=#>Shirts</a></li>
-						<li data-value=2><a href=#>T-Shirts</a></li>
+						<li data-value=8><a href=#>${i18n("Accessories")}</a></li>
+						<li data-value=24><a href=#>${i18n("Animations")}</a></li>
+						<li data-value=3><a href=#>${i18n("Audio")}</a></li>
+						<li data-value=13><a href=#>${i18n("Decals")}</a></li>
+						<li data-value=18><a href=#>${i18n("Faces")}</a></li>
+						<li data-value=19><a href=#>${i18n("Gear")}</a></li>
+						<li data-value=17><a href=#>${i18n("Heads")}</a></li>
+						<li data-value=40><a href=#>${i18n("Meshes")}</a></li>
+						<li data-value=10><a href=#>${i18n("Models")}</a></li>
+						<li data-value=12><a href=#>${i18n("Pants")}</a></li>
+						<li data-value=9><a href=#>${i18n("Places")}</a></li>
+						<li data-value=38><a href=#>${i18n("Plugins")}</a></li>
+						<li data-value=11><a href=#>${i18n("Shirts")}</a></li>
+						<li data-value=2><a href=#>${i18n("T-Shirts")}</a></li>
 					</ul>
 				</div>`
 				
@@ -689,7 +689,7 @@ pageInit.profile = () => {
 					
 					if(pageStart >= data.items.length) {
 						const categoryName = dropdown.$find(`li[data-value="${category}"]`)?.textContent
-						hlist.append(html`<div class='section-content-off btr-section-content-off'>This user has no favorite ${categoryName}</div>`)
+						hlist.append(html`<div class='section-content-off btr-section-content-off'>${i18n("This user has no favorite {0}", categoryName)}</div>`)
 						return
 					}
 					
@@ -768,7 +768,7 @@ pageInit.profile = () => {
 				
 				if(!initial?.experiences?.length) {
 					content.replaceChildren(
-						html`<div class="section-content-off btr-section-content-off">This user has no experiences</div>`
+						html`<div class="section-content-off btr-section-content-off">${i18n("This user has no experiences")}</div>`
 					)
 					return
 				}
@@ -852,11 +852,11 @@ pageInit.profile = () => {
 								<div class=btr-game-stats>
 									<ul class=hlist>
 										<li class=list-item>
-											<div class="text-label slide-item-stat-title" ng-bind="'Label.Playing' | translate">Playing</div>
+											<div class="text-label slide-item-stat-title" ng-bind="'Label.Playing' | translate">${i18n("Playing")}</div>
 											<div class="text-lead slide-item-members-count">&nbsp;</div>
 										</li>
 										<li class=list-item>
-											<div class="text-label slide-item-stat-title" ng-bind="'Label.Visits' | translate">Visits</div>
+											<div class="text-label slide-item-stat-title" ng-bind="'Label.Visits' | translate">${i18n("Visits")}</div>
 											<div class="text-lead text-overflow slide-item-visits">&nbsp;</div>
 										</li>
 									</ul>
@@ -908,13 +908,13 @@ pageInit.profile = () => {
 							if(userId !== loggedInUser) { return }
 							
 							item.$find(".dropdown-menu").append(
-								html`<li><a class=btr-btn-edit-place data-gameid=${universeId} data-placeid=${placeId}><div>Edit</div></a></li>`,
-								html`<li><a href="https://create.roblox.com/dashboard/creations/experiences/${universeId}/overview"><div>View Analytics</div></a></li>`,
-								html`<li><a href="https://advertise.roblox.com/"><div>Promote this Experience</div></a></li>`,
-								html`<li><a href="https://create.roblox.com/dashboard/creations/experiences/${universeId}/places/${placeId}/configure"><div>Configure this Place</div></a></li>`,
-								html`<li><a href="https://create.roblox.com/dashboard/creations/experiences/${universeId}/configure"><div>Configure this Experience</div></a></li>`,
-								html`<li><a href="https://create.roblox.com/dashboard/creations/experiences/${universeId}/localization"><div>Configure Localization</div></a></li>`,
-								html`<li><a class="btr-btn-toggle-profile" data-placeid="${placeId}"><div>Remove from Profile</div></a></li>`
+								html`<li><a class=btr-btn-edit-place data-gameid=${universeId} data-placeid=${placeId}><div>${i18n("Edit")}</div></a></li>`,
+								html`<li><a href="https://create.roblox.com/dashboard/creations/experiences/${universeId}/overview"><div>${i18n("View Analytics")}</div></a></li>`,
+								html`<li><a href="https://advertise.roblox.com/"><div>${i18n("Promote this Experience")}</div></a></li>`,
+								html`<li><a href="https://create.roblox.com/dashboard/creations/experiences/${universeId}/places/${placeId}/configure"><div>${i18n("Configure this Place")}</div></a></li>`,
+								html`<li><a href="https://create.roblox.com/dashboard/creations/experiences/${universeId}/configure"><div>${i18n("Configure this Experience")}</div></a></li>`,
+								html`<li><a href="https://create.roblox.com/dashboard/creations/experiences/${universeId}/localization"><div>${i18n("Configure Localization")}</div></a></li>`,
+								html`<li><a class="btr-btn-toggle-profile" data-placeid="${placeId}"><div>${i18n("Remove from Profile")}</div></a></li>`
 							)
 						})
 						
@@ -937,36 +937,36 @@ pageInit.profile = () => {
 						injectScript.call("linkify", target => $(target).linkify(), desc)
 						
 						if(desc.scrollHeight > desc.offsetHeight) {
-							const descToggle = html`<span class="btr-toggle-description">Show More</span>`
+							const descToggle = html`<span class="btr-toggle-description">${i18n("Show More")}</span>`
 							desc.after(descToggle)
 							
 							descToggle.$on("click", () => {
 								const expanded = !desc.parentNode.classList.contains("expanded")
 								desc.parentNode.classList.toggle("expanded", expanded)
 
-								descToggle.textContent = expanded ? "Show Less" : "Show More"
+								descToggle.textContent = expanded ? i18n("Show Less") : i18n("Show More")
 							})
 						}
 						
 						if(placeDetails.isPlayable) {
 							item.$find(".btr-game-playbutton-container").replaceChildren(
-								html`<div class="btr-game-playbutton btn-primary-lg" data-placeid=${placeId}>Play</div>`
+								html`<div class="btr-game-playbutton btn-primary-lg" data-placeid=${placeId}>${i18n("Play")}</div>`
 							)
 						} else {
 							const prohibitedReasons = {
-								UniverseDoesNotHaveARootPlace: "This game has no root place",
-								UniverseRootPlaceIsNotActive: "This game is not active",
-								InsufficientPermissionFriendsOnly: "This game is friends only",
-								InsufficientPermissionGroupOnly: "Group members only",
-								UnderReview: "This game is under moderation review",
-								PlaceHasNoPublishedVersion: "This place has no published version",
-								ContextualPlayabilityUnrated: "This experience is not accessible because it is unrated"
+								UniverseDoesNotHaveARootPlace: i18n("This game has no root place"),
+								UniverseRootPlaceIsNotActive: i18n("This game is not active"),
+								InsufficientPermissionFriendsOnly: i18n("This game is friends only"),
+								InsufficientPermissionGroupOnly: i18n("Group members only"),
+								UnderReview: i18n("This game is under moderation review"),
+								PlaceHasNoPublishedVersion: i18n("This place has no published version"),
+								ContextualPlayabilityUnrated: i18n("This experience is not accessible because it is unrated")
 							}
 							
 							item.$find(".btr-game-playbutton-container").replaceChildren(html`
 								<div title="${prohibitedReasons[placeDetails.reasonProhibited] || placeDetails.reasonProhibited}" class="btr-place-prohibited btn-common-play-game-unplayable-lg btn-primary-lg" disabled>
 									<span class="icon-status-unavailable-secondary"></span>
-									<span class="btn-text">Unavailable</span>
+									<span class="btn-text">${i18n("Unavailable")}</span>
 								</div>
 							`)
 						}

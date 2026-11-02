@@ -1,14 +1,15 @@
 {
 	"manifest_version": 2,
 
-	"name": "BTRoblox - Making Roblox Better",
+	"name": "__MSG_extName__",
 	"short_name": "BTRoblox",
-	"description": "Enhance your Roblox experience!",
+	"description": "__MSG_extDescription__",
+	"default_locale": "en",
 	"version": "3.7.1",
 	"author": "AntiBoomz",
 
 	"browser_action": {
-		"default_title": "Open BTRoblox Settings"
+		"default_title": "__MSG_actionTitle__"
 	},
 
 	"icons": {
@@ -28,6 +29,8 @@
 	
 	"background": {
 		"scripts": [
+			"js/i18n.js",
+			"js/locales/fr.js",
 			"js/utility.js",
 			"js/background.js",
 			
@@ -88,6 +91,8 @@
 				"*://*/*/user-sponsorship/*"
 			],
 			"js": [
+				"js/i18n.js",
+				"js/locales/fr.js",
 				"js/utility.js",
 				
 				"js/feat/shareddata.js",
@@ -128,6 +133,8 @@
 				"*://create.roblox.com/*"
 			],
 			"js": [
+				"js/i18n.js",
+				"js/locales/fr.js",
 				"js/utility.js",
 				
 				"js/feat/shareddata.js",

@@ -125,11 +125,11 @@ const SettingsModal = {
 						<checkbox label="Higher Robux Precision" path=higherRobuxPrecision></checkbox>
 						
 						<div style="display: inline-block; width: 50%; padding: 2px; float: right;">
-							<label style="">Robux to Cash Conversion Rate</label>
+							<label style="">${i18n("Robux to Cash Conversion Rate")}</label>
 							<span style="width: calc(100% - 14px); display: inline-flex; margin-top: 2px;">
 								<select id=btr-robuxToCash-currency style="flex: 0 1 auto">
-									<option value=None>None</option>
-									<option value=Custom>Custom</option>
+									<option value=None>${i18n("None")}</option>
+									<option value=Custom>${i18n("Custom")}</option>
 									<hr></hr>
 								</select>
 								<input id=btr-robuxToCash-cash type=text placeholder="$4.99" pattern="^.*?\\d+(\\.\\d+)?$"></input>
@@ -144,7 +144,7 @@ const SettingsModal = {
 					</group>
 					<group label=Navigation path=navigation toggleable>
 						<checkbox label="Keep Sidebar Open" path=noHamburger require=false></checkbox>
-						<button btr-tab=navigation class=btn-control-xs>Modify Buttons</button>
+						<button btr-tab=navigation class=btn-control-xs>${i18n("Modify Buttons")}</button>
 					</group>
 					<group label=Home path=home>
 						<checkbox label="Show More Friends" path=friendsSecondRow></checkbox>
@@ -165,7 +165,7 @@ const SettingsModal = {
 					</group>
 					<group label="Item Details" path=itemdetails toggleable>
 						<checkbox label="Item Previewer" path=itemPreviewer></checkbox>
-						<button btr-tab=itemPreviewerSettings class=btn-control-xs>Previewer Preferences</button>
+						<button btr-tab=itemPreviewerSettings class=btn-control-xs>${i18n("Previewer Preferences")}</button>
 						<checkbox label="Show Explorer Button" path=explorerButton></checkbox>
 						<checkbox label="Show Download Button" path=downloadButton></checkbox>
 						<checkbox label="Show Content Button" path=contentButton></checkbox>
@@ -184,11 +184,11 @@ const SettingsModal = {
 						<div id=btr-settings-wip>
 						</div>
 						<details id=btr-settings-experiments>
-							<summary>Roblox Experiment Editor</summary>
+							<summary>${i18n("Roblox Experiment Editor")}</summary>
 						</details>
 						<div style="margin-top: 12px; float:right; width: 100%; clear:both">
-							<button id=btr-fix-chat class=btn-control-xs style=float:left>Fix invis chat messages</button>
-							<button id=btr-reset-settings class=btn-control-xs style=float:right>Reset settings to default</button>
+							<button id=btr-fix-chat class=btn-control-xs style=float:left>${i18n("Fix invis chat messages")}</button>
+							<button id=btr-reset-settings class=btn-control-xs style=float:right>${i18n("Reset settings to default")}</button>
 						</div>
 					</group>
 				</div>
@@ -196,7 +196,7 @@ const SettingsModal = {
 				<div class=btr-settings-content data-name=navigation>
 					<div class=btr-settings-content-header>
 						<button class="btn-control-sm btr-close-subcontent"><span class=icon-left></span></button>
-						<h4>Navigation Buttons</h4>
+						<h4>${i18n("Navigation Buttons")}</h4>
 					</div>
 					<div style="display:flex">
 						<group label="Sidebar" style="width:50%">
@@ -209,7 +209,7 @@ const SettingsModal = {
 				<div class=btr-settings-content id=btr-settings-item-previewer data-name=itemPreviewerSettings>
 					<div class=btr-settings-content-header>
 						<button class="btn-control-sm btr-close-subcontent"><span class=icon-left></span></button>
-						<h4>Item Previewer Preferences</h4>
+						<h4>${i18n("Item Previewer Preferences")}</h4>
 					</div>
 					<div>
 						<group>
@@ -219,22 +219,22 @@ const SettingsModal = {
 							<checkbox label="Show Layered Clothing (WIP)" path=general.previewLayeredClothing></checkbox>
 							<br>
 							<select label="Automatically open previewer:" path=itemdetails.itemPreviewerMode>
-								<option value=never>Never</option>
-								<option value=animations>For Animations</option>
-								<option value=always>Always</option>
+								<option value=never>${i18n("Never")}</option>
+								<option value=animations>${i18n("For Animations")}</option>
+								<option value=always>${i18n("Always")}</option>
 							</select>
 							<select label="Preview on hover:" path=general.hoverPreviewMode>
-								<option value=never>Never</option>
-								<option value=always>Always</option>
+								<option value=never>${i18n("Never")}</option>
+								<option value=always>${i18n("Always")}</option>
 							</select>
 						</group>
 					</div>
 				</div>
 				<div class=btr-settings-footer>
 					<div class=btr-settings-footer-version>v${chrome.runtime.getManifest().version}</div>
-					<a href=https://x.com/AntiBoomz target=_blank title="Contact me on X" class=btr-settings-footer-x></a>
-					<a href=https://www.roblox.com/users/4719353/profile target=_blank title="Check me out on Roblox" class=btr-settings-footer-roblox></a>
-					<div class=btr-settings-footer-text>Refresh the page to apply settings</div>
+					<a href=https://x.com/AntiBoomz target=_blank title="${i18n("Contact me on X")}" class=btr-settings-footer-x></a>
+					<a href=https://www.roblox.com/users/4719353/profile target=_blank title="${i18n("Check me out on Roblox")}" class=btr-settings-footer-roblox></a>
+					<div class=btr-settings-footer-text>${i18n("Refresh the page to apply settings")}</div>
 				</div>
 			</div>
 		</div>`
@@ -246,7 +246,7 @@ const SettingsModal = {
 		}
 		
 		if(SETTINGS.loadError) {
-			this.settingsDiv.$find(".btr-settings-header").after(html`<div style="width: 100%; flex: 0 0 auto; white-space: pre-line; padding: 4px; text-align: center; background: red; top: 30px; z-index:1000; font-size: 15px; color: white; font-weight: bold;">Settings failed to load, changes may not save</div>`)
+			this.settingsDiv.$find(".btr-settings-header").after(html`<div style="width: 100%; flex: 0 0 auto; white-space: pre-line; padding: 4px; text-align: center; background: red; top: 30px; z-index:1000; font-size: 15px; color: white; font-weight: bold;">${i18n("Settings failed to load, changes may not save")}</div>`)
 		}
 		
 		if(SHARED_DATA.syncLoadError) {
@@ -302,7 +302,7 @@ const SettingsModal = {
 			for(const element of Object.values(Navigation.elements)) {
 				if(element.parent) { continue }
 				
-				const checkbox = createCheckbox(element.label || element.name, enabled => {
+				const checkbox = createCheckbox(element.label ? i18n(element.label) : element.name, enabled => {
 					element.setEnabled(enabled)
 				})
 				
@@ -316,7 +316,7 @@ const SettingsModal = {
 				
 				if(element.settings) {
 					for(const setting of Object.values(element.settings)) {
-						const settingCheckbox = createCheckbox(setting.label || setting.name, enabled => {
+						const settingCheckbox = createCheckbox(setting.label ? i18n(setting.label) : setting.name, enabled => {
 							setting.setEnabled(enabled)
 						})
 						
@@ -410,11 +410,11 @@ const SettingsModal = {
 					isResetting = true
 
 					resetTimer = 3
-					resetButton.textContent = `Are you sure? (${resetTimer})`
+					resetButton.textContent = i18n("Are you sure? ({0})", resetTimer)
 
 					resetInterval = setInterval(() => {
 						if(--resetTimer > 0) {
-							resetButton.textContent = `Are you sure? (${resetTimer})`
+							resetButton.textContent = i18n("Are you sure? ({0})", resetTimer)
 							return
 						}
 
@@ -444,7 +444,7 @@ const SettingsModal = {
 			const groupPath = group.getAttribute("path") || ""
 
 			const titleContainer = html`<div class=btr-setting-group-title-container></div>`
-			const title = html`<h4>${group.getAttribute("label") || ""}</h4>`
+			const title = html`<h4>${i18n(group.getAttribute("label") || "")}</h4>`
 			titleContainer.prepend(title)
 			group.prepend(titleContainer)
 
@@ -499,7 +499,7 @@ const SettingsModal = {
 				const resetButton = html`<span class=btr-setting-reset-button path=${settingPath}></span>`
 
 				if(select.hasAttribute("label")) {
-					wrapper.append(html`<label>${select.getAttribute("label") || ""}</label>`, html`<br>`)
+					wrapper.append(html`<label>${i18n(select.getAttribute("label") || "")}</label>`, html`<br>`)
 				}
 
 				select.before(wrapper)
@@ -565,7 +565,7 @@ const SettingsModal = {
 				const labelIndex = labelCounter++
 				input.id = `btr-settings-input-${labelIndex}`
 
-				const labelText = checkbox.hasAttribute("label") ? checkbox.getAttribute("label") : settingPath
+				const labelText = checkbox.hasAttribute("label") ? i18n(checkbox.getAttribute("label")) : settingPath
 				const label = html`<label for=btr-settings-input-${labelIndex} title="${labelText}">${labelText}</label>`
 				checkbox.append(label)
 
@@ -609,7 +609,7 @@ const SettingsModal = {
 						requireUpdate()
 					}
 				} else {
-					label.textContent += " (Bad setting)"
+					label.textContent += ` (${i18n("Bad setting")})`
 				}
 			}
 		}
@@ -675,7 +675,7 @@ const SettingsModal = {
 						}
 						
 						for(const option of select.$findAll("option:not([disabled])")) {
-							option.textContent = option === selected ? `${option.value} (selected)` : option.value
+							option.textContent = option === selected ? `${option.value} (${i18n("selected")})` : option.value
 						}
 					}
 

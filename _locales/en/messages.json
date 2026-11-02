@@ -1,0 +1,14 @@
+{
+	"extName": {
+		"message": "BTRoblox - Making Roblox Better",
+		"description": "Extension name"
+	},
+	"extDescription": {
+		"message": "Enhance your Roblox experience!",
+		"description": "Extension description"
+	},
+	"actionTitle": {
+		"message": "Open BTRoblox Settings",
+		"description": "Tooltip of the toolbar button"
+	}
+}

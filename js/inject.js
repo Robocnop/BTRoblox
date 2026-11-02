@@ -1,7 +1,12 @@
 "use strict"
 
 document.addEventListener("btroblox/init", ev => {
-	const [settings, IS_DEV_MODE, selectedRobuxToCashOption] = ev.detail
+	const [settings, IS_DEV_MODE, selectedRobuxToCashOption, i18nMessages] = ev.detail
+
+	const i18n = (str, ...args) => {
+		const translated = i18nMessages && Object.prototype.hasOwnProperty.call(i18nMessages, str) ? i18nMessages[str] : str
+		return args.length ? translated.replace(/\{(\d+)\}/g, (match, index) => (index in args ? args[index] : match)) : translated
+	}
 	
 	const BTRoblox = {}
 	let currentPage
@@ -1325,7 +1330,7 @@ document.addEventListener("btroblox/init", ev => {
 		"addBTRSettings": () => {
 			reactHook.inject("#settings-popover-menu", elem => {
 				elem.prepend(reactHook.createElement("li", {
-					dangerouslySetInnerHTML: { __html: `<a class="rbx-menu-item btr-settings-toggle">BTR Settings</a>`}
+					dangerouslySetInnerHTML: { __html: `<a class="rbx-menu-item btr-settings-toggle">${i18n("BTR Settings")}</a>`}
 				}))
 			})
 		},
@@ -1442,7 +1447,7 @@ document.addEventListener("btroblox/init", ev => {
 					reactHook.createElement("a", {
 						className: "text-link btr-advanced-button",
 						onClick: () => openAdvancedAccessories(),
-					}, "Advanced")
+					}, i18n("Advanced"))
 				)
 			})
 		},
@@ -1589,11 +1594,11 @@ document.addEventListener("btroblox/init", ev => {
 									index + 1, 0,
 									Link(
 										`/dashboard/creations/experiences/${args[0].creation.universeId}/overview`,
-										objects.jsx(objects.Mui.MenuItem, { children: "Configure Experience" }),
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("Configure Experience") }),
 									),
 									Link(
 										`/dashboard/creations/experiences/${args[0].creation.universeId}/places/${args[0].creation.assetId}/configure`,
-										objects.jsx(objects.Mui.MenuItem, { children: "Configure Start Place" })
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("Configure Start Place") })
 									)
 								)
 							} else if(args[0].itemType === "CatalogAsset") {
@@ -1604,11 +1609,11 @@ document.addEventListener("btroblox/init", ev => {
 									0, 0,
 									Link(
 										`https://www.roblox.com/catalog/${args[0].creation.assetId}/`,
-										objects.jsx(objects.Mui.MenuItem, { children: "View on Roblox" })
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("View on Roblox") })
 									),
 									Link(
 										`/dashboard/creations/catalog/${args[0].creation.assetId}/configure`,
-										objects.jsx(objects.Mui.MenuItem, { children: "Configure Asset" })
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("Configure Asset") })
 									)
 								)
 								
@@ -1665,7 +1670,7 @@ document.addEventListener("btroblox/init", ev => {
 									// objects.jsx(objects.Mui.Divider, {}),
 									Link(
 										`/dashboard/creations/store/${assetId}/configure`,
-										objects.jsx(objects.Mui.MenuItem, { children: "Configure Asset" })
+										objects.jsx(objects.Mui.MenuItem, { children: i18n("Configure Asset") })
 									)
 								)
 							}
@@ -1743,7 +1748,7 @@ document.addEventListener("btroblox/init", ev => {
 												d: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
 											})
 										}),
-										" ", "Download",,
+										" ", i18n("Download"),,
 									]
 								})
 							)
@@ -1932,7 +1937,7 @@ document.addEventListener("btroblox/init", ev => {
 			})
 			
 			contentScript.listen("skinColorError", () => {
-				Roblox.BootstrapWidgets.ToggleSystemMessage($(".alert-warning"), 100, 2000, "Failed to update skin tone.")
+				Roblox.BootstrapWidgets.ToggleSystemMessage($(".alert-warning"), 100, 2000, i18n("Failed to update skin tone."))
 			})
 			
 			hijackXHR(request => {
@@ -2789,7 +2794,7 @@ document.addEventListener("btroblox/init", ev => {
 							"li", { className: `btr-pager-mid` },
 							React.createElement(
 								"span", {},
-								"Page",
+								i18n("Page"),
 							),
 							React.createElement(
 								"input", {
@@ -2815,7 +2820,7 @@ document.addEventListener("btroblox/init", ev => {
 							),
 							React.createElement(
 								"span", {},
-								` of `,
+								` ${i18n("of")} `,
 								
 								React.createElement(
 									"span", {
@@ -2955,7 +2960,7 @@ document.addEventListener("btroblox/init", ev => {
 							let serverDetails
 							
 							if(regionSetting !== "region") {
-								status.props.children += `\nPing: ${props.ping ?? -1}ms`
+								status.props.children += `\n${i18n("Ping: {0}ms", props.ping ?? -1)}`
 							}
 							
 							if(regionSetting !== "ping") {
@@ -2979,13 +2984,13 @@ document.addEventListener("btroblox/init", ev => {
 								
 								if(regionSetting === "combined") {
 									status.props.children += ` (${
-									!serverDetails ? "Loading" :
+									!serverDetails ? i18n("Loading") :
 									!serverDetails.location ? serverDetails.statusText :
 									serverDetails.location.country.code
 								})`
 								} else {
-									status.props.children += `\nRegion: ${
-										!serverDetails ? "Loading" :
+									status.props.children += `\n${i18n("Region:")} ${
+										!serverDetails ? i18n("Loading") :
 										!serverDetails.location ? serverDetails.statusText :
 										`${serverDetails.location.city}, ${
 										serverDetails.location.country.name === "United States" ?
@@ -2997,7 +3002,7 @@ document.addEventListener("btroblox/init", ev => {
 								}
 								
 								status.props.title = 
-									!serverDetails ? "Loading" :
+									!serverDetails ? i18n("Loading") :
 									!serverDetails.location ? serverDetails.statusTextLong :
 									serverDetails.location.country.name === "United States" ?
 										`${serverDetails.location.city}, ${serverDetails.location.region.name}, ${serverDetails.location.country.name}`
@@ -3295,7 +3300,7 @@ document.addEventListener("btroblox/init", ev => {
 									className: "btr-item-owned",
 									children: reactHook.createElement("span", {
 										className: "icon-checkmark-white-bold",
-										title: "You own this item"
+										title: i18n("You own this item")
 									})
 								}))
 							}
